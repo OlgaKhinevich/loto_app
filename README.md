@@ -1,24 +1,15 @@
 # loto-app
 
-## Project setup
+## About app
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+The client part of the lottery web application
 ```
 
-### Compiles and minifies for production
+### Technologies and programs
 ```
-npm run build
-```
+The application design was created in Figma.
+Technologies were used to develop the interface:
+- Vue.js (Vue CLI)
+- Tailwind CSS
+API requests are made using fetch
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
