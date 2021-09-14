@@ -11,5 +11,5 @@ The application design was created in Figma.
 Technologies were used to develop the interface:
 - Vue.js (Vue CLI)
 - Tailwind CSS
-API requests are made using fetch
+API requests were made using fetch
 
