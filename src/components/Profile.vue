@@ -27,6 +27,9 @@
             <div class="wrapper shadow-wrap-sh w-1/3 h-1/3 m-2 items-start justify-start">
                 <div>
                     <p class="label">till the upcoming round</p>
+                    <div>
+                        <Timer :date="game_info.date" />
+                    </div>
                 </div>  
             </div>
         </div>
@@ -50,6 +53,7 @@
 
 <script>
 import History from './History.vue';
+import Timer from './Timer.vue';
 import {HOSTNAME} from '../assets/constants.js';
 import MyCombinations from './MyCombinations.vue';
 
@@ -60,25 +64,46 @@ export default {
                 _id: '',
                 balance: 0
             },
+            game_info: {
+                current_round: 0,
+                prize_allocation_supply: 0,
+                date: 0,
+                combination_add_expire_date: 0
+            },
             profile_mode: 'current'
         }
     },
     components: {
         History,
-        MyCombinations
+        MyCombinations,
+        Timer
     },
     mounted() {
         this.get_user_info();
+        this.get_game_info();
     },
+    /*computed: {
+        round_date() {
+            return moment((+ new Date(this.game_info.date)) - (+Date.now())).format('D.H.m');
+        }
+    },*/
     methods: {
         async get_user_info() {
             try {
                 const response = await fetch(`${HOSTNAME}/api/user_info`);
                 if(!response.ok) throw new Error(response.statusText);
                 const data = await response.json();
-                console.log(data);
                 Object.assign(this.user_info, data);
-                console.log(this.user_info);
+            } catch(err) {
+                console.log(err);
+            }
+        },
+        async get_game_info() {
+            try {
+                const response = await fetch(`${HOSTNAME}/api/game_info`);
+                if(!response.ok) throw new Error(response.statusText);
+                const data = await response.json();
+                Object.assign(this.game_info, data);
             } catch(err) {
                 console.log(err);
             }
