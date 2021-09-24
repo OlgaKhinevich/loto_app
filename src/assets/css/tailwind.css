@@ -32,4 +32,7 @@
     .table {
         @apply table-fixed w-full text-left divide-y-4 divide-wrap-clr;
     }
+    .cell {
+        @apply p-4 rounded-md text-h3-clr font-bold;
+    }
 }

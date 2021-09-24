@@ -2,7 +2,7 @@
   <div>
       <div class="flex justify-between my-2">
         <h3 class="text-lg">Current round</h3>
-        <button class="active-btn text-sm m-0">add combination</button>
+        <button to="/add" class="active-btn text-sm m-0"><router-link to="/add">add combination</router-link></button>
       </div>
       
       <table class="table">

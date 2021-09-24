@@ -1,8 +1,8 @@
 <template>
     <div class="flex">
-        <div class="bg-clr">{{ remaining_time }}</div>
-        <div class="bg-clr"></div>
-        <div class="bg-clr"></div>
+        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.days }}</div>
+        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.hours }}</div>
+        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.minutes }}</div>
     </div>
 </template>
 
@@ -14,30 +14,57 @@ export default {
     data() {
         return {
             timer: null,
-            remaining_time: 0
+            countdown: {
+                days: 0,
+                hours: 0,
+                minutes: 0,  
+            },
+            expired: false
         }
     },  
-    computed: {
-
-    },
     destroyed() {
-        this.stop_timer();
+        //this.stop_timer();
     },
     methods: {
+        pretty_date(n){
+            if(n<10) return `0${n}`;
+            return n;
+        },
         start_timer() {
-            const self = this; 
+            const self = this;
             this.timer = setTimeout(function run(){
-                const to_game_moment = moment(self.date);
-                const now = moment();
-                const days = to_game_moment.diff(now, "days");
-                const hours = to_game_moment.subtract(now.hours(), "hours").hours();
-                const minutes = to_game_moment.subtract(now.minutes(), "minutes").minutes();
-                self.remaining_time = moment(`${days}:${hours}:${minutes}`, "D:h:m").format("DD:hh:mm");
+                const total = self.get_remaining_time(self.date);
+                if (total.days <= 0 && total.hours <= 0 && total.minutes <= 0) {
+                    for (let key in total) {
+                        total[key] = self.pretty_date(0);
+                    }
+                    self.stop_timer();
+                } else {
+                    for (let key in total) {
+                        total[key] = self.pretty_date(total[key]);
+                    }
+                }
+                Object.assign(self.countdown, total);
                 self.timer = setTimeout(run, 60000);
-            }, 0)
+            }, 0);
+        },
+        get_remaining_time(end_date){
+            const now = moment();
+            const then = moment(end_date);
+            const diff = then.diff(now);
+            const duration_object = moment.duration(diff);
+            let parts = {} ;
+            for (const item of ['days', 'hours', 'minutes']) {
+                const d = duration_object[item]();
+                console.log(d);
+                duration_object.subtract(moment.duration(d, item));
+                parts[item] = d;
+            }
+            console.log(parts);
+            return parts;
         },
         stop_timer() {
-            clearTimeout(this.timer)
+            clearInterval(this.timer);    
         }
     },
     watch: {
