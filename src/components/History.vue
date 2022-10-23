@@ -90,3 +90,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  table td:before {
+    content: attr(data-label);
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+</style>

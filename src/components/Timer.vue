@@ -56,11 +56,9 @@ export default {
             let parts = {} ;
             for (const item of ['days', 'hours', 'minutes']) {
                 const d = duration_object[item]();
-                console.log(d);
                 duration_object.subtract(moment.duration(d, item));
                 parts[item] = d;
             }
-            console.log(parts);
             return parts;
         },
         stop_timer() {
