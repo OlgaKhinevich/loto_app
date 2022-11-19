@@ -1,7 +1,7 @@
 <template>
   <div class="component-container">
     <div class="w-3/4 h-5/6 flex">
-      <div class=" flex flex-col w-3/5 h-full justify-between mx-4">
+      <div class="d-flex flex-column w-3/5 h-full justify-between mx-4">
         <div class="flex justify-between mx-2.5 items-end">
           <h3>Choose number</h3>
           <p class="text-note-clr cursor-pointer" @click="reset_combination">Clear all</p>

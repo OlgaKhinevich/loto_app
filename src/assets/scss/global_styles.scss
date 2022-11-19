@@ -1,0 +1,79 @@
+// Define variable defaults
+$body-bg: #1F273C;
+$wrapper-bg: #26304B;
+$body-color: #919DAD;
+$label-color: #919DAD;
+$title-color: #92BFF6;
+$h3-color: #DDE0E3;
+$note-color: #8494BB;
+$start-grad-color: #4366CB;
+$mid-grad-color: #8079FF;
+$end-grad-color: #92BFF6;
+$input-color: #2E3858;
+$placeholder-color: #55698B;
+$row-color: #2E3858;
+$comb-clr : #4466CC;
+$font-family: 'Montserrat', sans-serif;
+
+
+body {
+    font-family: $font-family !important;
+}
+.wrapper {
+    background-color: $wrapper-bg !important;
+    border-radius: 20px !important;
+}
+h3 {
+    color: $h3-color;
+    font-weight: 700 !important;
+}
+label {
+    font-variant: small-caps;
+    font-weight: 700;
+    color: $label-color;
+}
+input {
+    background-color: $input-color !important;
+    border: none !important;
+    outline: none;
+    color: $end-grad-color !important;
+    font-weight: 500 !important;
+}
+::placeholder { 
+   color: #55698B !important;
+}
+.active-btn {
+    text-transform: uppercase !important;
+    font-weight: 700 !important;
+    color: $h3-color !important;
+    border: none !important;
+    min-width: 120px;
+    background: linear-gradient(91.09deg, $start-grad-color -12.32%, $mid-grad-color 65.56%, $end-grad-color 131.46%);
+}
+.note-text {
+    color: $note-color;
+    font-size: .98rem;
+    text-align: center;
+}
+.note-link {
+    color: $end-grad-color;
+    font-weight: 700;
+}
+.note-link:hover {
+    text-decoration: none;
+    color: #AFD3FF;
+}
+.comb-num {
+    color: $h3-color;
+    font-weight: 700;
+}
+.table {
+    // table-fixed w-full text-left divide-y-4 divide-wrap-clr;
+}
+.cell {
+    color: $h3-color;
+    font-weight: 800;
+}
+
+@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import 'node_modules/bootstrap-vue/src/index.scss';

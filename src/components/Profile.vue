@@ -1,12 +1,5 @@
 <template>
 <div class="component-container xs:h-auto">
-    <div class="w-full bg-bg-clr h-1/8 py-2 px-8 flex fixed top-0 left-0 justify-between items-center">
-        <div>logo</div>
-        <div>
-            <span class="text-h3-clr">{{user_info._id}}</span>
-            <img class="inline-block w-6 pl-2" src="../static/img/bx_bx-exit.svg" alt="exit" />
-        </div>     
-    </div>
     <div class="w-10/12 md:w-3/4 h-5/6 ">
         <h3 class="mb-4 ml-5">Profile</h3>
         <div class="flex items-center md:items-stretch md:justify-between flex-col md:flex-row ">

@@ -1,6 +1,6 @@
 const HOST = "localhost";
-const PORT = 8080;
-const HOSTNAME = `http://${HOST}:${PORT}`;
+const PORT = 3000;
+const HOSTNAME = `http://${HOST}:${PORT}/api`;
 
 module.exports = {
     HOST,

@@ -1,34 +1,33 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <component :is="layout">
+      <router-view></router-view>
+    </component>
   </div>
 </template>
 
 <script>
-import Auth from './components/Auth.vue';
-import Profile from './components/Profile.vue';
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import AddCombination from './components/AddCombination.vue';
-
-Vue.use(VueRouter)
-
-const routes = [
-    { path: '/', component: Auth },
-    { path: '/profile', component: Profile },
-    { path: '/add', component: AddCombination}
-]
-
-const router = new VueRouter({routes})
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import AuthLayout from '@/layouts/AuthLayout.vue'
+import ProfileLayout from '@/layouts/ProfileLayout.vue'
 
 export default {
   name: 'App',
   components: {
-   
+    AuthLayout,
+    ProfileLayout
   },
-  router: router
+  computed: {
+    layout() {
+      return (this.$route.meta.layout || 'auth') + '-layout'
+    }
+  }
 }
 </script>
 
-<style></style>
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@400;700&display=swap');
+
+</style>
 
