@@ -1,8 +1,17 @@
 <template>
-    <div class="flex">
-        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.days }}</div>
-        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.hours }}</div>
-        <div class="bg-bg-clr p-2 mr-1 mt-1 rounded text-end-gr-clr font-bold text-lg">{{ countdown.minutes }}</div>
+    <div class="d-flex mt-3">
+        <div>
+            <div class="timer-number mr-2">{{ countdown.days }}</div>
+            <small>days</small>
+        </div>
+        <div>
+            <div class="timer-number mr-2">{{ countdown.hours }}</div>
+            <small>hours</small>
+        </div>
+        <div>
+            <div class="timer-number">{{ countdown.minutes }}</div>
+            <small>minutes</small>
+        </div>
     </div>
 </template>
 

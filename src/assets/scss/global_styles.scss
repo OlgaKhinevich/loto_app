@@ -27,10 +27,23 @@ h3 {
     color: $h3-color;
     font-weight: 700 !important;
 }
-label {
+.label {
     font-variant: small-caps;
     font-weight: 700;
     color: $label-color;
+}
+.active-label {
+    color: $title-color;
+    position: relative;
+}
+.active-label::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 2px;
+    background-color: $title-color;
 }
 input {
     background-color: $input-color !important;
@@ -50,6 +63,16 @@ input {
     min-width: 120px;
     background: linear-gradient(91.09deg, $start-grad-color -12.32%, $mid-grad-color 65.56%, $end-grad-color 131.46%);
 }
+.link-btn {
+    color: $title-color !important;
+    font-weight: 600 !important;
+    border: none !important;
+    padding: 0 !important;
+    text-decoration: none !important;
+}
+.link-btn:focus {
+    box-shadow: none !important;
+}
 .note-text {
     color: $note-color;
     font-size: .98rem;
@@ -63,16 +86,56 @@ input {
     text-decoration: none;
     color: #AFD3FF;
 }
-.comb-num {
-    color: $h3-color;
+.table {
+    border-spacing: 0 7px;
+    border-collapse: separate;
+}
+.table > tbody {
+    color: white !important;
     font-weight: 700;
 }
-.table {
-    // table-fixed w-full text-left divide-y-4 divide-wrap-clr;
+.table > thead th {
+    padding-bottom: 3px !important;
 }
-.cell {
+.table > tbody > tr {
+    background-color: $input-color;
+}
+.table > tbody td {
+    padding: 1rem;
+}
+.table > tbody td:first-child {
+    border-radius: 7px 0 0 7px;
+}
+.table > tbody td:last-child {
+    border-radius: 0 7px 7px 0;
+}
+.comb-num {
     color: $h3-color;
-    font-weight: 800;
+    background-color: $wrapper-bg;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+.comb-num-win {
+    background-color: $comb-clr;
+}
+.user-balance {
+    font-weight: 700;
+    color: $end-grad-color;
+}
+hr {
+    background-color: $label-color;
+    height: 2px;
+    margin-top: 0 !important;
+}
+.timer-number {
+    background-color: $body-bg;
+    color: $title-color;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 2rem;
+    padding: 6px 12px;
+    text-align: center;
 }
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';

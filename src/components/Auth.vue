@@ -8,7 +8,7 @@
           <b-form class="d-flex flex-column" @submit.stop.prevent="auth_user">
 
             <b-form-group class="mb-0">
-              <label for="login" class="mb-1">login</label> 
+              <label for="login" class="label mb-1">login</label> 
               <b-form-input 
                 type="text"
                 placeholder="login"
@@ -19,7 +19,7 @@
             </b-form-group>
 
             <b-form-group class="mt-2 mb-0">
-              <label for="password" class="mb-1">password</label>
+              <label for="password" class="label mb-1">password</label>
               <b-form-input 
                 type="password"
                 placeholder="password"
@@ -30,7 +30,7 @@
             </b-form-group>
 
             <b-form-group class="mt-2 mb-0" v-if="auth_mode == 'Sign up'">
-              <label for="re_password" class="mb-1">repeat password</label>
+              <label for="re_password" class="label mb-1">repeat password</label>
               <b-form-input 
                 type="password"
                 placeholder="repeat password"

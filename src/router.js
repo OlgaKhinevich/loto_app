@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from './views/HomeView.vue'
+import auth from '@/store/auth.module.js'
 
 Vue.use(VueRouter)
 
-export default new VueRouter({
+const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL, 
     routes: [
@@ -23,13 +24,13 @@ export default new VueRouter({
         {
             path: '/profile',
             name: 'profile',
-            meta: { layout: 'profile' },
+            meta: { layout: 'profile', auth: true },
             component: () => import('./views/ProfileView.vue')
         },
         {
             path: '/add_combination',
             name: 'add',
-            meta: { layout: 'profile' },
+            meta: { layout: 'profile', auth: true },
             component: () => import('./views/AddCombView.vue')
         },
         {
@@ -40,3 +41,14 @@ export default new VueRouter({
         }
     ]
 })
+
+router.beforeEach((to, from, next) => {
+    const requireAuth = to.matched.some(record => record.meta.auth);
+    if(requireAuth && auth.state.role === "") {
+        next('/authorization')
+    } else {
+        next()
+    }
+})
+
+export default router;

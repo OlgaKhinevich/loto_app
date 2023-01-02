@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+    <b-container fluid>
         <navbar-component />
         <router-view></router-view>
     </b-container>

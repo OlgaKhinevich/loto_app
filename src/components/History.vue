@@ -1,77 +1,61 @@
 <template>
-  <div>
+  <b-row>
+    <b-col>
       <h3 class="text-lg my-2">Past rounds</h3>
-      <table class="table">
-        <tr>
-          <th class="label w-1/12 pb-1.5">round</th>
-          <th class="label w-2/12 pb-1.5">date</th>
-          <th class="label w-2/12 pb-1.5">5 of 5</th>
-          <th class="label w-2/12 pb-1.5">4 of 5</th>
-          <th class="label w-2/12 pb-1.5">3 of 5</th>
-          <th class="label w-3/12 pb-1.5">lose combinations</th>
-          <th class="label w-2/12 pb-1.5">prize</th>
-          <th class="w-7"></th>
-        </tr>
-        <tr class="bg-row-clr">
-          <td valign="top" class="pl-3 py-1.5 font-semibold text-sm text-h3-clr rounded-l-md">1</td>
-          <td valign="top" class="py-1.5 font-semibold text-sm text-h3-clr">01.06.2021</td>
-          <td valign="top" class="py-1.5 pr-4">
-            <div v-if="combination">
-              <span class="comb-num bg-comb-clr">2</span>
-              <span class="comb-num bg-comb-clr">6</span>
-              <span class="comb-num bg-comb-clr">7</span>
-              <span class="comb-num bg-comb-clr">12</span>
-              <span class="comb-num bg-comb-clr">20</span>
-            </div>
-          </td>
-          <td valign="top" class="py-2 pr-4">
-            <div v-if="combination">
-              <span class="comb-num bg-comb-clr">2</span>
-              <span class="comb-num bg-comb-clr">6</span>
-              <span class="comb-num bg-comb-clr">7</span>
-              <span class="comb-num bg-comb-clr">12</span>
-              <span class="comb-num bg-comb-clr">20</span>
-            </div>
-          </td>
-          <td valign="top" class="py-1.5 pr-4">
-            <div v-if="combination">
-              <span class="comb-num bg-comb-clr">2</span>
-              <span class="comb-num bg-comb-clr">6</span>
-              <span class="comb-num bg-comb-clr">7</span>
-              <span class="comb-num bg-comb-clr">12</span>
-              <span class="comb-num bg-comb-clr">20</span>
-            </div>
-          </td>
-          <td valign="top" class="py-1.5 pr-4">
-            <div v-if="combination">
-              <span class="comb-num bg-comb-clr">2</span>
-              <span class="comb-num bg-comb-clr">6</span>
-              <span class="comb-num bg-comb-clr">7</span>
-              <span class="comb-num bg-comb-clr">12</span>
-              <span class="comb-num bg-comb-clr">20</span>
-            </div>
-            <div v-if="combination">
-              <span class="comb-num bg-comb-clr">2</span>
-              <span class="comb-num bg-comb-clr">6</span>
-              <span class="comb-num bg-comb-clr">7</span>
-              <span class="comb-num bg-comb-clr">12</span>
-              <span class="comb-num bg-comb-clr">20</span>
-            </div>
-          </td>
-          <td valign="top" class="py-1.5 text-sm font-semibold text-h3-clr">5000 BON</td>
-          <td valign="top" class="py-2 pr-3 rounded-r-md">
-            <img :src="srcImg" @click="open_combinations" />
-          </td>
-        </tr>   
-      </table>
-  </div>
+      <b-table class="table" :items="history_combinations" :fields="fields" borderless>
+        <template #cell(five_of_five)="data">
+          <span v-for="(num, i) in data.item.five_of_five"
+            :key="i"
+            class="comb-num bg-comb-clr"
+          >{{ num }}</span>
+        </template>
+        <template #cell(four_of_five)="data">
+          <span v-for="(num, i) in data.item.four_of_five"
+            :key="i"
+            class="comb-num bg-comb-clr"
+          >{{ num }}</span>
+        </template>
+        <template #cell(three_of_five)="data">
+          <span v-for="(num, i) in data.item.three_of_five"
+            :key="i"
+            class="comb-num bg-comb-clr"
+          >{{ num }}</span>
+        </template>
+        <template #cell(lose_combinations)="data">
+          <span v-for="(num, i) in data.item.three_of_five"
+            :key="i"
+            class="comb-num bg-comb-clr"
+          >{{ num }}</span>
+        </template>
+      </b-table>
+    </b-col>
+  </b-row>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      combination: false
+      fields: [
+        'round',
+        'date',
+        'five_of_five',
+        'four_of_five',
+        'three_of_five',
+        'lose_combinations',
+        'prize'
+      ],
+      history_combinations: [
+        {
+          round: 1,
+          date: "21.06.2021",
+          five_of_five: [1, 2, 3, 4, 20],
+          four_of_five: [1, 2, 3, 4, 20],
+          three_of_five: [1, 2, 3, 4, 20],
+          lose_combinations: [1, 2, 3, 4, 20],
+          prize: 10,
+        }
+      ]
     }
   },
   computed: {
@@ -84,18 +68,9 @@ export default {
     }
   },
   methods: {
-    open_combinations() {
-      this.combination = !this.combination;
-    }
   }
 }
 </script>
 
 <style scoped>
-  table td:before {
-    content: attr(data-label);
-    float: left;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
 </style>

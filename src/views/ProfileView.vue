@@ -1,12 +1,14 @@
 <template>
-  <div>
-      
-  </div>
+    <profile-component /> 
 </template>
 
 <script>
-export default {
+import Profile from '@/components/Profile.vue'
 
+export default {
+  components: {
+        'profile-component': Profile
+    }
 }
 </script>
 

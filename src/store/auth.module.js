@@ -1,33 +1,32 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import AuthService from '../services/auth.service';
 
-Vue.use(Vuex)
-
-export default new Vuex.Store({
+const auth = {
     state: {
-        role: ''
+        role: 'user'
     },
     mutations: {
-      set_role(state, role) {
-        state.role = role;
-      } 
+        set_role(state, role) {
+            state.role = role;
+        }
     },
     actions: {
         async signin({ commit }, user) {
             try {
-                const role = await this._vm.$api.signin(user);
+                const role = await AuthService.login(user);
                 await commit.set_role(role);
             } catch (err) {
                 console.log(err);
             }
         },
-        async signup({commit}, user) {
+        async signup({ commit }, user) {
             try {
-                const response = await this._vm.$api.signup(user);
+                const response = await AuthService.register(user);
                 await commit.set_role(response);
             } catch (err) {
                 console.log(err);
             }
         }
     }
-})
+}
+
+export default auth;

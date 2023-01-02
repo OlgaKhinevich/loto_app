@@ -1,11 +1,20 @@
 <template>
-    <div class="w-full bg-bg-clr h-1/8 py-2 px-8 flex fixed top-0 left-0 justify-between items-center">
-        <!-- <div>logo</div>
-        <div>
-            <span class="text-h3-clr">{{user_info._id}}</span>
-            <img class="inline-block w-6 pl-2" src="../static/img/bx_bx-exit.svg" alt="exit" />
-        </div>      -->
-    </div>
+    <b-row>
+        <b-col cols="12">
+            <b-navbar>
+                <b-navbar-brand href="#">NavBar</b-navbar-brand>
+                <b-navbar-nav class="ml-auto">
+
+                    <b-nav-item-dropdown right>
+                        <template #button-content>
+                            <span class="text-white mr-2">User</span>
+                        </template>
+                        <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                    </b-nav-item-dropdown>
+                </b-navbar-nav>
+            </b-navbar>
+        </b-col>
+    </b-row>
 </template>
 
 <script>
