@@ -1,7 +1,7 @@
 <template>
     <b-row>
         <b-col cols="12">
-            <b-navbar>
+            <b-navbar fixed>
                 <b-navbar-brand href="#">NavBar</b-navbar-brand>
                 <b-navbar-nav class="ml-auto">
 

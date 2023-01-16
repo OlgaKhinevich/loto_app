@@ -27,6 +27,11 @@
             class="comb-num bg-comb-clr"
           >{{ num }}</span>
         </template>
+        <template #cell(more)="row">
+          <b-button size="sm" @click="row.toggleDetails" class="mr-2">
+            <b-icon icon="chevron-down" variant="info"></b-icon>
+          </b-button>
+        </template>
       </b-table>
     </b-col>
   </b-row>
@@ -43,7 +48,8 @@ export default {
         'four_of_five',
         'three_of_five',
         'lose_combinations',
-        'prize'
+        'prize',
+        'more'
       ],
       history_combinations: [
         {

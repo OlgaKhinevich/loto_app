@@ -137,6 +137,9 @@ hr {
     padding: 6px 12px;
     text-align: center;
 }
+.modal .modal-content {
+    background-color: $wrapper-bg;
+}
 
 @import 'node_modules/bootstrap/scss/bootstrap.scss';
 @import 'node_modules/bootstrap-vue/src/index.scss';

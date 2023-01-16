@@ -5,28 +5,28 @@
             <h3 class="mb-4 ml-3">Profile</h3>
             <b-row>
                 <b-col cols="4">
-                    <b-card class="wrapper d-flex flex-column justify-content-between h-100">
-                        <h5 class="label mt-0 mb-2">balance</h5>
+                    <b-card class="wrapper px-2 d-flex flex-column justify-content-between h-100">
+                        <h5 class="label mt-0 mb-4">balance</h5>
                         <div>
-                            <h2 class="user-balance">{{user_info.balance}} BON</h2>
+                            <h1 class="user-balance">{{user_info.balance}} BON</h1>
                         </div>
                     </b-card>
                 </b-col>
                 <b-col cols="4">
-                    <b-card class="wrapper h-100">
+                    <b-card class="wrapper px-2 h-100">
                         <h5 class="label mt-0 mb-2">till the end of receiving combinations</h5>
                         <Timer :date="game_info.combination_add_expire_date" />
                     </b-card>
                 </b-col>
                 <b-col cols="4">
-                    <b-card class="wrapper">
+                    <b-card class="wrapper px-2">
                         <h5 class="label mt-0 mb-2">till the upcoming round</h5>
                         <Timer :date="game_info.date" /> 
-                        <b-button
+                        <!-- <b-button
                             class="active-btn mt-3"
-                            @click="active_round = true"
+                            v-b-modal.round-modal
                         >open round
-                        </b-button>
+                        </b-button> -->
                     </b-card>
                 </b-col>
             </b-row>
@@ -34,13 +34,13 @@
                 <b-col cols="12">
                     <b-card class="wrapper">
                         <div class="d-flex">
-                            <h5 :class="profile_mode == 'current' ? 'active-label label': 'label'"
+                            <h5 :class="profile_mode == 'current' ? 'active-label label switch-label' : 'label switch-label'"
                                 @click="change_mode('current')"
                             >
                                 my combinations
                             </h5>
                             <h5 
-                                :class="profile_mode == 'history' ? 'active-label label ml-3': 'label ml-3'"
+                                :class="profile_mode == 'history' ? 'active-label label ml-3 switch-label' : 'label ml-3 switch-label'"
                                 @click="change_mode('history')"
                             >
                                 history
@@ -54,7 +54,7 @@
             </b-row>
         </b-col>
     </b-row>
-    <Round v-if="active_round" />
+    <Round />
 </b-container>
   
 </template>
@@ -98,7 +98,7 @@ export default {
         Round
     },
     mounted() {
-        this.get_user_info();
+        // this.get_user_info();
         this.get_game_info();
         this.get_my_combinations(1,1);
         this.get_round_info();
@@ -121,3 +121,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .switch-label {
+        cursor: pointer;
+    }
+</style>
